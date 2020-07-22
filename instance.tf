@@ -1,5 +1,4 @@
 resource "google_compute_instance" "instance" {
-  project      = var.project
   name         = "${var.name}-instance"
   machine_type = var.machine_type
   zone         = var.zone
@@ -25,7 +24,6 @@ resource "google_compute_instance" "instance" {
 }
 
 resource "google_compute_address" "instance" {
-  project      = var.project
   name         = "${var.name}-address"
   address_type = "EXTERNAL"
   region       = var.region

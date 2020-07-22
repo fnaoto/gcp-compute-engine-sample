@@ -1,11 +1,13 @@
 provider "google" {
-  project = "sample"
+  project = var.project
   region  = "asia-northeast1"
 }
 
 terraform {
   backend "gcs" {}
 }
+
+variable "project" {}
 
 variable "name" {
   default = "name"
@@ -17,10 +19,6 @@ variable "region" {
 
 variable "zone" {
   default = "asia-northeast1-a"
-}
-
-variable "project" {
-  default = "project"
 }
 
 variable "machine_type" {
