@@ -1,5 +1,4 @@
 resource "google_compute_firewall" "from_all" {
-  project = var.project
   name    = "${var.name}-firewall"
   network = google_compute_network.network.name
 
@@ -9,5 +8,5 @@ resource "google_compute_firewall" "from_all" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["from_all"]
+  target_tags   = [google_compute_instance.instance.tags]
 }
