@@ -6,12 +6,12 @@ resource "google_compute_global_address" "lb" {
 
 resource "google_compute_health_check" "lb" {
   name               = "${var.name}-health-check"
-  request_path       = "/"
   timeout_sec        = 1
   check_interval_sec = 1
 
   http_health_check {
-    port = 80
+    request_path = "/"
+    port         = 80
   }
 }
 
