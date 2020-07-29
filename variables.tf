@@ -57,10 +57,22 @@ variable "postgres_password" {
   default = "password"
 }
 
+variable "redis_tier" {
+  default = "STANDARD_HA"
+}
+
+variable "redis_memory_size_gb" {
+  default = 1
+}
+
+variable "redis_version" {
+  default = "REDIS_4_0"
+}
+
 locals {
   tags = [
+    var.name,
     "http-server",
     "https-server",
-    "name",
   ]
 }
