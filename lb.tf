@@ -6,10 +6,12 @@ resource "google_compute_global_address" "lb" {
 
 resource "google_compute_health_check" "lb" {
   name               = "${var.name}-health-check"
+  request_path       = "/"
   timeout_sec        = 1
   check_interval_sec = 1
-  tcp_health_check {
-    port = "80"
+
+  http_health_check {
+    port = 80
   }
 }
 
@@ -20,7 +22,7 @@ resource "google_compute_backend_service" "lb" {
   timeout_sec = 10
 
   backend {
-    group = google_compute_instance_group.lb.self_link
+    group = google_compute_instance_group.instance.self_link
   }
 
   health_checks = [google_compute_health_check.lb.self_link]
