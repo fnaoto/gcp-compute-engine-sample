@@ -34,7 +34,10 @@ variable "boot_disk_image" {
 }
 
 variable "metadata_startup_script" {
-  default = "python -m SimpleHTTPServer 80 &"
+  default = <<EOF
+      yum install -y nginx;
+      service nginx start;
+EOF
 }
 
 locals {
