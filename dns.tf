@@ -18,3 +18,12 @@ resource "google_dns_record_set" "database" {
 
   rrdatas = [google_sql_database_instance.database.public_ip_address]
 }
+
+resource "google_dns_record_set" "redis" {
+  name         = "redis.${google_dns_managed_zone.private.dns_name}"
+  managed_zone = google_dns_managed_zone.private.name
+  type         = "A"
+  ttl          = 300
+
+  rrdatas = [google_redis_instance.redis.host]
+}
