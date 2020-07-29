@@ -37,6 +37,14 @@ variable "metadata_startup_script" {
 EOF
 }
 
+variable "database_version" {
+  default = "POSTGRES_12"
+}
+
+variable "database_tier" {
+  default = "db-f1-micro"
+}
+
 locals {
   tags = [
     "http-server",
