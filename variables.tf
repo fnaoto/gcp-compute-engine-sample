@@ -30,5 +30,5 @@ variable "public_subnet_ip_cidr_range" {
 }
 
 variable "boot_disk_image" {
-  default = "debian-cloud/debian-10"
+  default = "centos-7-v20200714"
 }
