@@ -1,5 +1,5 @@
 provider "google" {
-  project = var.project
+  project = var.GOOGLE_PROJECT
   region  = "asia-northeast1"
 }
 
@@ -7,7 +7,7 @@ terraform {
   backend "gcs" {}
 }
 
-variable "project" {}
+variable "GOOGLE_PROJECT" {}
 
 variable "name" {
   default = "name"
@@ -35,4 +35,12 @@ variable "boot_disk_image" {
 
 variable "metadata_startup_script" {
   default = "python -m SimpleHTTPServer 80 &"
+}
+
+locals {
+  tags = [
+    "http-server",
+    "https-server",
+    "name",
+  ]
 }

@@ -8,7 +8,7 @@ resource "google_compute_firewall" "from_all" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = [var.name]
+  target_tags   = local.tags
 }
 
 resource "google_compute_firewall" "from_internal" {
@@ -30,5 +30,5 @@ resource "google_compute_firewall" "from_internal" {
   }
 
   source_ranges = [google_compute_subnetwork.public.ip_cidr_range]
-  target_tags   = [var.name]
+  target_tags   = local.tags
 }
