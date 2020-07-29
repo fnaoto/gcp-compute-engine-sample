@@ -22,7 +22,7 @@ variable "zone" {
 }
 
 variable "machine_type" {
-  default = "n1-standard-1"
+  default = "g1-small"
 }
 
 variable "public_subnet_ip_cidr_range" {
