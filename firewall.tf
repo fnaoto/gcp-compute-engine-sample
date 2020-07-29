@@ -1,5 +1,5 @@
 resource "google_compute_firewall" "from_all" {
-  name    = "${var.name}-firewall"
+  name    = "${var.name}-firewall-from-all"
   network = google_compute_network.network.name
 
   allow {
@@ -8,11 +8,11 @@ resource "google_compute_firewall" "from_all" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = [google_compute_instance.instance.tags]
+  target_tags   = [var.name]
 }
 
 resource "google_compute_firewall" "from_internal" {
-  name    = "${var.name}-firewall-from_internal"
+  name    = "${var.name}-firewall-from-internal"
   network = google_compute_network.network.name
 
   allow {
@@ -29,6 +29,6 @@ resource "google_compute_firewall" "from_internal" {
     protocol = "icmp"
   }
 
-  source_ranges = [var.public_subnet_ip_cidr_range]
-  target_tags   = [google_compute_instance.instance.tags]
+  source_ranges = [google_compute_subnetwork.public.ip_cidr_range]
+  target_tags   = [var.name]
 }
