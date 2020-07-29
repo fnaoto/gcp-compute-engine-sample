@@ -30,5 +30,5 @@ variable "public_subnet_ip_cidr_range" {
 }
 
 variable "boot_disk_image" {
-  default = "centos-7-v20200714"
+  default = "centos-cloud/centos-7"
 }

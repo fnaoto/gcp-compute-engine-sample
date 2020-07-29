@@ -17,7 +17,7 @@ resource "google_compute_backend_service" "lb" {
   name        = "${var.name}-backend-service"
   port_name   = "http"
   protocol    = "HTTP"
-  timeout_sec = 3000
+  timeout_sec = 10
 
   backend {
     group = google_compute_instance_group.lb.self_link
@@ -42,10 +42,4 @@ resource "google_compute_global_forwarding_rule" "http" {
   ip_address = google_compute_global_address.lb.address
   port_range = "80"
   depends_on = [google_compute_global_address.lb]
-}
-
-resource "google_compute_instance_group" "lb" {
-  name      = "${var.name}-instance-group"
-  instances = [google_compute_instance.instance.self_link]
-  zone      = var.zone
 }

@@ -28,3 +28,9 @@ resource "google_compute_address" "instance" {
   address_type = "EXTERNAL"
   region       = var.region
 }
+
+resource "google_compute_instance_group" "instance" {
+  name      = "${var.name}-instance-group"
+  instances = [google_compute_instance.instance.self_link]
+  zone      = var.zone
+}
