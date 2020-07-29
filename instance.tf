@@ -4,6 +4,8 @@ resource "google_compute_instance" "instance" {
   zone         = var.zone
   tags         = [var.name]
 
+  metadata_startup_script = var.metadata_startup_script
+
   boot_disk {
     initialize_params {
       image = var.boot_disk_image

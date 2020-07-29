@@ -32,3 +32,7 @@ variable "public_subnet_ip_cidr_range" {
 variable "boot_disk_image" {
   default = "centos-cloud/centos-7"
 }
+
+variable "metadata_startup_script" {
+  default = "python -m SimpleHTTPServer 80 &"
+}
