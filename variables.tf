@@ -1,13 +1,10 @@
 provider "google" {
-  project = var.GOOGLE_PROJECT
-  region  = "asia-northeast1"
+  region = "asia-northeast1"
 }
 
 terraform {
   backend "gcs" {}
 }
-
-variable "GOOGLE_PROJECT" {}
 
 variable "name" {
   default = "name"
