@@ -29,6 +29,6 @@ resource "google_compute_firewall" "from_internal" {
     protocol = "icmp"
   }
 
-  source_ranges = [google_compute_subnetwork.public.ip_cidr_range]
+  source_ranges = [google_compute_subnetwork.network.ip_cidr_range]
   target_tags   = local.tags
 }

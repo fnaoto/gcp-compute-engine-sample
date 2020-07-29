@@ -13,7 +13,7 @@ resource "google_compute_instance" "instance" {
   }
 
   network_interface {
-    subnetwork = google_compute_subnetwork.public.name
+    subnetwork = google_compute_subnetwork.network.name
 
     access_config {
       nat_ip = google_compute_address.instance.address

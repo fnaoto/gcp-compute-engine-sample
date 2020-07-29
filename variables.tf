@@ -22,7 +22,7 @@ variable "machine_type" {
   default = "g1-small"
 }
 
-variable "public_subnet_ip_cidr_range" {
+variable "subnet_ip_cidr_range" {
   default = "192.168.1.0/24"
 }
 
@@ -43,6 +43,18 @@ variable "database_version" {
 
 variable "database_tier" {
   default = "db-f1-micro"
+}
+
+variable "availability_type" {
+  default = "REGIONAL"
+}
+
+variable "postgres_name" {
+  default = "postgres"
+}
+
+variable "postgres_password" {
+  default = "password"
 }
 
 locals {
