@@ -1,13 +1,10 @@
 provider "google" {
-  project = var.project
-  region  = "asia-northeast1"
+  region = "asia-northeast1"
 }
 
 terraform {
   backend "gcs" {}
 }
-
-variable "project" {}
 
 variable "name" {
   default = "name"
@@ -22,13 +19,60 @@ variable "zone" {
 }
 
 variable "machine_type" {
-  default = "n1-standard-1"
+  default = "g1-small"
 }
 
-variable "public_subnet_ip_cidr_range" {
+variable "subnet_ip_cidr_range" {
   default = "192.168.1.0/24"
 }
 
 variable "boot_disk_image" {
-  default = "debian-cloud/debian-10"
+  default = "centos-cloud/centos-7"
+}
+
+variable "metadata_startup_script" {
+  default = <<EOF
+      yum install -y nginx;
+      service nginx start;
+EOF
+}
+
+variable "database_version" {
+  default = "POSTGRES_12"
+}
+
+variable "database_tier" {
+  default = "db-f1-micro"
+}
+
+variable "availability_type" {
+  default = "REGIONAL"
+}
+
+variable "postgres_name" {
+  default = "postgres"
+}
+
+variable "postgres_password" {
+  default = "password"
+}
+
+variable "redis_tier" {
+  default = "STANDARD_HA"
+}
+
+variable "redis_memory_size_gb" {
+  default = 1
+}
+
+variable "redis_version" {
+  default = "REDIS_4_0"
+}
+
+locals {
+  tags = [
+    var.name,
+    "http-server",
+    "https-server",
+  ]
 }
